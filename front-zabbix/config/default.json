@@ -1,0 +1,10 @@
+{
+  "web": {
+    "host": "localhost",
+    "port": 5000
+  },
+  "serverApi": {
+    "host": "http://127.0.0.1:",
+    "port": "3210"
+  }
+}
