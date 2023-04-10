@@ -1,0 +1,86 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 200px);
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: auto;
+    height: 550px;
+    width: 68%;
+    margin-right: 30px;
+}
+
+.grid > * {
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.imageHost {
+    position: relative;
+    left: 50%;
+    margin-left: -50px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px #000000;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #305df1;
+    border-radius: 5px;
+}
+
+
+.table {
+    width: 100%;
+    border: none;
+    margin-bottom: 20px;
+    display: block;
+    overflow-x: auto;
+    overflow-y: auto;
+    white-space: nowrap;
+}
+
+.table thead th {
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.5);
+    border-left: 1px solid rgba(211, 211, 211, 0.5);
+    border-right: 1px solid rgba(211, 211, 211, 0.5);
+}
+
+.table tbody td {
+    text-align: center;
+    color: #FFFFFF;
+    border-left: 1px solid rgba(211, 211, 211, 0.5);
+    border-right: 1px solid rgba(211, 211, 211, 0.5);
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+    border-bottom: none;
+}
+
+.table thead tr th:first-child, .table tbody tr td:first-child {
+    border-left: none;
+}
+
+.table tbody tr td:only-child {
+    border-bottom: none;
+}
+
+.table thead tr th:last-child, .table tbody tr td:last-child {
+    border-right: none;
+}

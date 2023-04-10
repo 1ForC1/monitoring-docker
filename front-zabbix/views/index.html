@@ -4,27 +4,37 @@
     <meta charset="UTF-8">
     <title>Авторизация</title>
     <link rel="stylesheet" type="text/css" href="/css/auth.css"/>
+    <link rel="icon" href="/images/icon.ico" type="image/x-icon">
 </head>
 <body>
 
 <h2>Система мониторинга состояния технических средств</h2>
-<div class="container" id="container">
+<div class="container" id="container" >
     <div class="form-container sign-up-container">
         <form action="#">
             <h1>Новый аккаунт</h1>
             <span>заполните поля для регистрации</span>
-            <input id="fioReg" type="text" placeholder="ФИО"/>
-            <input id="loginReg" type="email" placeholder="Логин"/>
-            <input id="passwordReg" type="password" placeholder="Пароль"/>
-            <button>Зарегистрироваться</button>
+            <input id="SurnameReg" maxlength="50" required pattern="[а-яА-Яa-zA-Z]{1,50}"
+                   title="от 1 до 50 латиница, кириллица, цифры" type="text" placeholder="Фамилия"/>
+            <input id="NameReg" maxlength="50" required pattern="[а-яА-Яa-zA-Z0-9]{1,50}"
+                   title="от 1 до 50 латиница, кириллица, цифры" type="text" placeholder="Имя"/>
+            <input id="PatronymicReg" maxlength="50" required pattern="[а-яА-Яa-zA-Z0-9]{1,50}"
+                   title="от 1 до 50 латиница, кириллица, цифры" type="text" placeholder="Отчество"/>
+            <input id="loginReg" maxlength="50" required pattern="[a-zA-Z0-9]{1,50}" title="от 1 до 50 латиница, цифры"
+                   type="text" placeholder="Логин"/>
+            <input id="passwordReg" maxlength="50" required pattern="[a-zA-Z0-9]{1,50}"
+                   title="от 1 до 50 латиница, цифры" type="password" placeholder="Пароль"/>
+            <button onclick="reg()">Зарегистрироваться</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
         <form action="#">
             <h1>Авторизация</h1>
             <br>
-            <input id="loginAuth" type="text" placeholder="Логин"/>
-            <input id="passwordAuth" type="password" placeholder="Пароль"/>
+            <input id="loginAuth" maxlength="50" required pattern="[a-zA-Z0-9]{1,50}" title="от 1 до 50 латиница, цифры"
+                   type="text" placeholder="Логин"/>
+            <input id="passwordAuth" maxlength="50" required pattern="[a-zA-Z0-9]{1,50}"
+                   title="от 1 до 50 латиница, цифры" type="password" placeholder="Пароль"/>
             <a style="text-decoration: underline" href="#">Забыли пароль?</a>
             <button onclick="auth()">Вход</button>
         </form>
@@ -55,8 +65,9 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });</script>
+<script src="/js/GetCookie.js"></script>
 <script src="/js/RequestSample.js"></script>
-<script src="/js/test.js"></script>
+<script src="/js/Auth.js"></script>
 <noscript>Включите JavaScript для просмотра контента.</noscript>
 </body>
 </html>

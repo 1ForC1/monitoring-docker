@@ -12,6 +12,12 @@ services:
     depends_on:
       - postgres
 
+  zabbix:
+    restart: always
+    build: ./zabbix-data-handler
+    depends_on:
+      - postgres  
+
   frontend:
     restart: always
     build: ./front-zabbix
@@ -30,6 +36,8 @@ services:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: password
         POSTGRES_DB: zabbix_api
+    volumes:
+      - postgres_data:/var/lib/postgresql
 
   adminer:
     restart: always

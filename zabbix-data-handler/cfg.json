@@ -1,0 +1,14 @@
+{
+	"LoginZabbix": "Admin",
+	"PasswordZabbix": "zabbix",
+	"Time": "00h00m30s",
+	"Url": "http://192.168.42.200/zabbix/api_jsonrpc.php",
+	"HostDB": "127.0.0.1",
+	"PortDB": 5432,
+	"UserDB": "postgres",
+	"PasswordDB": "1",
+	"DBName": "zabbix_api",
+	"LoginServer": "user",
+	"PasswordServer": "12345678",
+	"DoDeleteFrom": true
+}

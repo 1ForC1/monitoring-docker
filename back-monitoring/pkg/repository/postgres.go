@@ -7,8 +7,10 @@ import (
 )
 
 const (
-	usersTable = "\"User\""
-	hostsTable = "host"
+	usersTable    = "\"User\""
+	hostsTable    = "host"
+	hostInfoTable = "host_info"
+	triggersTable = "triggers"
 )
 
 type ConfigStruct struct {

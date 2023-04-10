@@ -37,9 +37,12 @@ func (h *Handler) InitRoutes() *gin.Engine {
 		auth.POST("/sign-in", h.signIn)
 	}
 
-	hosts := router.Group("/api", h.userIdentity)
+	api := router.Group("/api", h.userIdentity)
 	{
-		hosts.GET("/hosts", h.getAllHosts)
+		api.GET("/hosts", h.getAllHosts)
+		api.POST("/profile", h.getProfile)
+		api.POST("/host-info", h.getHostInfo)
+		api.GET("/triggers", h.getAllTriggers)
 	}
 
 	return router
