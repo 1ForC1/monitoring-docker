@@ -4,8 +4,8 @@ WORKDIR /zabbix
 
 COPY . .
 
-RUN go build -o zabbix main.go
+RUN go build -o zabbix-data-handler main.go
 
-RUN chmod +x zabbix
+RUN chmod +x zabbix-data-handler
 
-CMD ["./zabbix"]
+CMD ["./zabbix-data-handler"]
