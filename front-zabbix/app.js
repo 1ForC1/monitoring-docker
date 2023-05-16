@@ -22,7 +22,6 @@ app.get("/auth", function (req, res) {
 
 app.get("/main", function (req, res) {
     let cookieVal = req.cookies.MonitoringCookieToken;
-    //console.log(cookieVal)
     if (cookieVal){
         res.render("main")
     }
@@ -33,7 +32,6 @@ app.get("/main", function (req, res) {
 
 app.get("/profile", function (req, res) {
     let cookieVal = req.cookies.MonitoringCookieToken;
-    //console.log(cookieVal)
     if (cookieVal){
         res.render("profile")
     }
@@ -42,8 +40,30 @@ app.get("/profile", function (req, res) {
     }
 });
 
+app.get("/log", function (req, res) {
+    let cookieVal = req.cookies.MonitoringCookieToken;
+    if (cookieVal){
+        res.render("log")
+    }
+    else{
+        res.redirect(401, "auth")
+    }
+});
+
+app.get("/users", function (req, res) {
+    let cookieVal = req.cookies.MonitoringCookieToken;
+    if (cookieVal){
+        res.render("users")
+    }
+    else{
+        res.redirect(401, "auth")
+    }
+});
+
 app.get("", function (req, res){
-    res.redirect(301, "main")
+    res.redirect(301, "auth")
 })
 
-app.listen(port, () => console.info(`App listening on port:  ${port}`))
+app.listen(port
+    //, () => console.info(`App listening on port:  ${port}`)
+)

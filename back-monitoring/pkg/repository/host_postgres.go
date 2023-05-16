@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/lib/pq"
-	"github.com/sirupsen/logrus"
 )
 
 type HostPostgres struct {
@@ -24,9 +23,11 @@ func (r *HostPostgres) GetAll() ([]model.Host, error) {
 	row, err := r.db.Query(query)
 
 	for row.Next() {
-		if err := row.Scan(&host.IdHost, &host.HostName, pq.Array(&host.HostInterfaces)); err != nil {
-			logrus.Fatal(err.Error())
+		err := row.Scan(&host.IdHost, &host.HostName, pq.Array(&host.HostInterfaces))
+		if err != nil {
+			return nil, err
 		}
+
 		lists = append(lists, host)
 	}
 

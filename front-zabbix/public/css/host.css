@@ -14,10 +14,25 @@
     margin: 10px;
 }
 
+.hostDiv:hover > p {
+    margin-bottom: 15px;
+}
+
+.hostDiv:hover > img {
+    height: 75px;
+    width: 75px;
+}
+
+.hostDiv:active > img {
+    height: 70px;
+    width: 70px;
+}
+
 .imageHost {
     position: relative;
-    left: 50%;
-    margin-left: -50px;
+    left: 25%;
+    height: 80px;
+    width: 80px
 }
 
 /* width */
@@ -33,18 +48,25 @@
     margin: 10px;
 }
 
+::placeholder {
+    color:    #FFFFFF;
+    opacity: 0.5;
+}
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #305df1;
     border-radius: 5px;
 }
 
+::-webkit-scrollbar-corner {
+    background: rgba(0,0,0,0);
+}
 
 .table {
     width: 100%;
     border: none;
     margin-bottom: 20px;
-    display: block;
     overflow-x: auto;
     overflow-y: auto;
     white-space: nowrap;
@@ -65,12 +87,13 @@
 .table tbody td {
     text-align: center;
     color: #FFFFFF;
+    border-top: 1px solid rgba(211, 211, 211, 0.5);
     border-left: 1px solid rgba(211, 211, 211, 0.5);
     border-right: 1px solid rgba(211, 211, 211, 0.5);
+    border-bottom: 1px solid rgba(211, 211, 211, 0.5);
     padding: 10px 15px;
     font-size: 14px;
     vertical-align: top;
-    border-bottom: none;
 }
 
 .table thead tr th:first-child, .table tbody tr td:first-child {
@@ -83,4 +106,64 @@
 
 .table thead tr th:last-child, .table tbody tr td:last-child {
     border-right: none;
+}
+
+tr:hover {
+    text-decoration: underline;
+    text-decoration-color: #FFFFFF;
+}
+
+.toggler-wrapper {
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggler-wrapper input[type="checkbox"] {
+    display: none;
+}
+
+.toggler-wrapper input[type="checkbox"]:checked+.toggler-slider {
+    background-color: #4abe51;
+}
+
+.toggler-wrapper .toggler-slider {
+    background-color: #FFFFFF;
+    position: absolute;
+    border-radius: 100px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.toggler-wrapper .toggler-knob {
+    position: absolute;
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.toggler-wrapper.style-22 input[type="checkbox"]:checked+.toggler-slider .toggler-knob {
+    left: calc(100% - 19px - 3px);
+    transform: scale(1);
+}
+
+.toggler-wrapper.style-22 .toggler-slider {
+    background-color: #D62828;
+}
+
+.toggler-wrapper.style-22 .toggler-knob {
+    width: calc(25px - 6px);
+    height: calc(25px - 6px);
+    border-radius: 50%;
+    left: 3px;
+    top: 3px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background-color: white;
+    transform: scale(0.5);
 }

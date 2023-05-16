@@ -18,8 +18,8 @@ func NewAuthPostgres(db *sql.DB) *AuthPostgres {
 
 func (r *AuthPostgres) CreateUser(user model.User) (int, error) {
 	var id int
-	query := fmt.Sprintf("INSERT INTO %s (surname, name, patronymic, login, password) VALUES ('%s', '%s', '%s', '%s', '%s') RETURNING ID_USER",
-		usersTable, user.Surname, user.Name, user.Patronymic, user.Login, user.Password)
+	query := fmt.Sprintf("INSERT INTO %s (surname, name, patronymic, login, password, \"CanDeleteUsers\", \"CanViewHosts\", \"CanViewLog\") VALUES ('%s', '%s', '%s', '%s', '%s', '%v', '%v', '%v') RETURNING ID_USER",
+		usersTable, user.Surname, user.Name, user.Patronymic, user.Login, user.Password, false, false, false)
 	row := r.db.QueryRow(query)
 	if err := row.Scan(&id); err != nil {
 		return 0, err

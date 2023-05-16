@@ -14,6 +14,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   height: 100vh;
   margin: -20px 0 50px;
+  overflow-y: clip;
 }
 
 h1 {
@@ -70,7 +71,7 @@ button.ghost {
   border-color: #FFFFFF;
 }
 
-form {
+.formdiv {
   background-color: #FFFFFF;
   display: flex;
   align-items: center;

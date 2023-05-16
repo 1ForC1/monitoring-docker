@@ -17,12 +17,10 @@ func NewProfilePostgres(db *sql.DB) *ProfilePostgres {
 func (r *ProfilePostgres) GetProfile(login string) (model.User, error) {
 	var profile model.User
 
-	query := fmt.Sprintf("SELECT Surname, Name, Patronymic, Login FROM %s WHERE LOGIN='%s'", usersTable, login)
+	query := fmt.Sprintf("SELECT Surname, Name, Patronymic, Login, \"CanDeleteUsers\", \"CanViewHosts\", \"CanViewLog\" FROM %s WHERE LOGIN='%s'", usersTable, login)
 	row := r.db.QueryRow(query)
 
-	if err := row.Scan(&profile.Surname, &profile.Name, &profile.Patronymic, &profile.Login); err != nil {
-		//logrus.Error(err.Error())
-	}
+	err := row.Scan(&profile.Surname, &profile.Name, &profile.Patronymic, &profile.Login, &profile.CanDeleteUsers, &profile.CanViewHosts, &profile.CanViewLog)
 
 	return profile, err
 }

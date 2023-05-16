@@ -1,7 +1,7 @@
 port: "3210"
 
 db:
-  HostDB: "postgres"
+  HostDB: "80.78.241.80"
   PortDB: 5433
   UserDB: "postgres"
   DBName: "zabbix_api"

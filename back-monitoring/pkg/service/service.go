@@ -15,12 +15,24 @@ type Host interface {
 	GetAll() ([]model.Host, error)
 }
 
+type User interface {
+	GetAll() ([]model.User, error)
+}
+
 type Trigger interface {
 	GetAll() ([]model.Trigger, error)
 }
 
 type Profile interface {
 	GetProfile(login string) (model.User, error)
+}
+
+type DeleteUser interface {
+	DeleteUser(login string) (model.User, error)
+}
+
+type UpdateUser interface {
+	UpdateUser(user model.User) (model.User, error)
 }
 
 type HostInfo interface {
@@ -33,6 +45,9 @@ type Service struct {
 	Profile
 	HostInfo
 	Trigger
+	User
+	DeleteUser
+	UpdateUser
 }
 
 func NewService(repos *repository.Repository) *Service {
@@ -42,5 +57,8 @@ func NewService(repos *repository.Repository) *Service {
 		Profile:       NewProfileService(repos.Profile),
 		HostInfo:      NewHostInfoService(repos.HostInfo),
 		Trigger:       NewTriggerService(repos.Trigger),
+		User:          NewUserService(repos.User),
+		DeleteUser:    NewDeleteUserService(repos.DeleteUser),
+		UpdateUser:    NewUpdateUserService(repos.UpdateUser),
 	}
 }

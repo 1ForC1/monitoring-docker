@@ -41,8 +41,11 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	{
 		api.GET("/hosts", h.getAllHosts)
 		api.POST("/profile", h.getProfile)
+		api.GET("/users", h.getAllUsers)
 		api.POST("/host-info", h.getHostInfo)
 		api.GET("/triggers", h.getAllTriggers)
+		api.DELETE("/delete-user", h.deleteUser)
+		api.POST("/update-user", h.updateUser)
 	}
 
 	return router

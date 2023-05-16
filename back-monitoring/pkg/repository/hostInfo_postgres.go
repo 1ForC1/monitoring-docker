@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/lib/pq"
-	"github.com/sirupsen/logrus"
 )
 
 type HostInfoPostgres struct {
@@ -22,14 +21,16 @@ func (r *HostInfoPostgres) GetHostInfo(hostid int) (model.HostInfo, error) {
 	query := fmt.Sprintf("SELECT * FROM %s WHERE hostid='%v'", hostInfoTable, hostid)
 	row := r.db.QueryRow(query)
 
-	if err := row.Scan(&hostInfo.IdHost, &hostInfo.HostName, pq.Array(&hostInfo.HostInterfaces), &hostInfo.ValuePerCpu1, &hostInfo.TimePerCpu1, &hostInfo.ValuePerCpu5,
+	err := row.Scan(&hostInfo.IdHost, &hostInfo.HostName, pq.Array(&hostInfo.HostInterfaces), &hostInfo.ValuePerCpu1, &hostInfo.TimePerCpu1, &hostInfo.ValuePerCpu5,
 		&hostInfo.TimePerCpu5, &hostInfo.ValuePerCpu15, &hostInfo.TimePerCpu15, &hostInfo.ValueSizeFree, &hostInfo.TimeSizeFree, &hostInfo.ValueSizeTotal,
 		&hostInfo.TimeSizeTotal, &hostInfo.ValueMemoryAvailable, &hostInfo.TimeMemoryAvailable, &hostInfo.ValueMemoryTotal, &hostInfo.TimeMemoryTotal,
 		&hostInfo.ValueCpuUtilIdle, &hostInfo.TimeCpuUtilIdle, &hostInfo.ValueCpuUtilUser, &hostInfo.TimeCpuUtilUser, &hostInfo.ValueCpuSystem,
 		&hostInfo.TimeCpuSystem, &hostInfo.ValueCpuSteal, &hostInfo.TimeCpuSteal, &hostInfo.ValueCpuSoftirq, &hostInfo.TimeCpuSoftirq,
-		&hostInfo.ValueCpuNice, &hostInfo.TimeCpuNice, &hostInfo.ValueCpuInterrupt, &hostInfo.TimeCpuInterrupt, &hostInfo.ValueCpuIowait, &hostInfo.TimeCpuIowait); err != nil {
-		logrus.Fatal(err.Error())
+		&hostInfo.ValueCpuNice, &hostInfo.TimeCpuNice, &hostInfo.ValueCpuInterrupt, &hostInfo.TimeCpuInterrupt, &hostInfo.ValueCpuIowait, &hostInfo.TimeCpuIowait)
+	if err != nil {
+		return model.HostInfo{}, err
 	}
+
 	if hostInfo.ValuePerCpu1.Valid == false {
 		hostInfo.ValuePerCpu1.String = "н/д"
 	}

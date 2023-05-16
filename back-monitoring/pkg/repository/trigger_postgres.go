@@ -4,7 +4,6 @@ import (
 	"back-monitoring/model"
 	"database/sql"
 	"fmt"
-	"github.com/sirupsen/logrus"
 )
 
 type TriggerPostgres struct {
@@ -23,9 +22,11 @@ func (r *TriggerPostgres) GetAll() ([]model.Trigger, error) {
 	row, err := r.db.Query(query)
 
 	for row.Next() {
-		if err := row.Scan(&trigger.TriggerId, &trigger.TriggersExpression, &trigger.Description, &trigger.Priority, &trigger.IdHost); err != nil {
-			logrus.Fatal(err.Error())
+		err := row.Scan(&trigger.TriggerId, &trigger.TriggersExpression, &trigger.Description, &trigger.Priority, &trigger.IdHost)
+		if err != nil {
+			return nil, err
 		}
+
 		lists = append(lists, trigger)
 	}
 

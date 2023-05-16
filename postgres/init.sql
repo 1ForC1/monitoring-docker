@@ -5,7 +5,7 @@
 -- Dumped from database version 13.4
 -- Dumped by pg_dump version 13.4
 
--- Started on 2023-04-10 20:23:01
+-- Started on 2023-05-16 06:59:42
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -97,7 +97,10 @@ CREATE TABLE public."User" (
     name character varying(50) NOT NULL,
     patronymic character varying(50),
     login character varying(50) NOT NULL,
-    password character varying NOT NULL
+    password character varying NOT NULL,
+    "CanDeleteUsers" boolean NOT NULL,
+    "CanViewHosts" boolean NOT NULL,
+    "CanViewLog" boolean NOT NULL
 );
 
 
@@ -968,10 +971,10 @@ ALTER TABLE ONLY public.size_total ALTER COLUMN id_size_total SET DEFAULT nextva
 -- Data for Name: User; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public."User" (id_user, surname, name, patronymic, login, password) FROM stdin;
-1	TestSurname1	TestName1	TestPatronymic1	login	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6f5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8
-2	TestSurname1	TestName1	TestPatronymic1	login2	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6f5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8
-9	Доброславский	Сергей	Владимирович	Ser123	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6fb1b3773a05c0ed0176787a4f1574ff0075f7521e
+COPY public."User" (id_user, surname, name, patronymic, login, password, "CanDeleteUsers", "CanViewHosts", "CanViewLog") FROM stdin;
+39	Доброславский	Сергей	Владимирович	test	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6fa94a8fe5ccb19ba61c4c0873d391e987982fbbd3	t	t	t
+34	2	2	2	1	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6f356a192b7913b04c54574d18c28d46e6395428ab	t	f	t
+33	TestSurname2	TestName2	TestPatronymic2	Ser123	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6fda39a3ee5e6b4b0d3255bfef95601890afd80709	t	t	f
 \.
 
 
@@ -1746,7 +1749,6 @@ COPY public.size_total (id_size_total, hostid, value_size_total, time_size_total
 --
 
 COPY public.triggers (triggerid, triggers_expression, description, priority, hostid) FROM stdin;
-13800	{ARM01:agent.ping.nodata(5m)}=1	Сборщик данных на ARM01 недоступен более 5 минут	3	10119
 13836	{ARM03:agent.ping.nodata(5m)}=1	Сборщик данных на ARM03 недоступен более 5 минут	3	10121
 13853	{ARM04:agent.ping.nodata(5m)}=1	Сборщик данных на ARM04 недоступен более 5 минут	3	10122
 13875	{ARM05:agent.ping.nodata(5m)}=1	Сборщик данных на ARM05 недоступен более 5 минут	3	10123
@@ -1769,9 +1771,7 @@ COPY public.triggers (triggerid, triggers_expression, description, priority, hos
 14197	{ARM22:agent.ping.nodata(5m)}=1	Сборщик данных на ARM22 недоступен более 5 минут	3	10140
 14212	{ARM23:agent.ping.nodata(5m)}=1	Сборщик данных на ARM23 недоступен более 5 минут	3	10141
 14229	{ARM24:agent.ping.nodata(5m)}=1	Сборщик данных на ARM24 недоступен более 5 минут	3	10142
-14246	{ARM25:agent.ping.nodata(5m)}=1	Сборщик данных на ARM25 недоступен более 5 минут	3	10143
 14265	{ARM26:agent.ping.nodata(5m)}=1	Сборщик данных на ARM26 недоступен более 5 минут	3	10144
-14282	{ARM27:agent.ping.nodata(5m)}=1	Сборщик данных на ARM27 недоступен более 5 минут	3	10145
 14297	{ARM28:agent.ping.nodata(5m)}=1	Сборщик данных на ARM28 недоступен более 5 минут	3	10146
 14314	{ARM29:agent.ping.nodata(5m)}=1	Сборщик данных на ARM29 недоступен более 5 минут	3	10147
 14333	{ARM30:agent.ping.nodata(5m)}=1	Сборщик данных на ARM30 недоступен более 5 минут	3	10148
@@ -1783,7 +1783,10 @@ COPY public.triggers (triggerid, triggers_expression, description, priority, hos
 14452	{MC4:agent.ping.nodata(5m)}=1	Сборщик данных на MC4 недоступен более 5 минут	3	10154
 14486	{CC2:agent.ping.nodata(5m)}=1	Сборщик данных на CC2 недоступен более 5 минут	3	10155
 14435	{CC3:agent.ping.nodata(5m)}=1	Сборщик данных на CC3 недоступен более 5 минут	3	10156
-14469	{CC4:agent.ping.nodata(5m)}=1	Сборщик данных на CC4 недоступен более 5 минут	3	10157
+13800	{ARM01:agent.ping.nodata(5m)}=1	Сборщик данных на ARM01 недоступен более 5 минут	2	10119
+14246	{ARM25:agent.ping.nodata(5m)}=1	Сборщик данных на ARM25 недоступен более 5 минут	2	10143
+14282	{ARM27:agent.ping.nodata(5m)}=1	Сборщик данных на ARM27 недоступен более 5 минут	1	10145
+14469	{CC4:agent.ping.nodata(5m)}=1	Сборщик данных на CC4 недоступен более 5 минут	4	10157
 \.
 
 
@@ -1793,7 +1796,7 @@ COPY public.triggers (triggerid, triggers_expression, description, priority, hos
 -- Name: User_id_user_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."User_id_user_seq"', 15, true);
+SELECT pg_catalog.setval('public."User_id_user_seq"', 39, true);
 
 
 --
@@ -2246,7 +2249,7 @@ ALTER TABLE ONLY public.triggers
     ADD CONSTRAINT triggers_hostid_fkey FOREIGN KEY (hostid) REFERENCES public.host(hostid);
 
 
--- Completed on 2023-04-10 20:23:02
+-- Completed on 2023-05-16 06:59:44
 
 --
 -- PostgreSQL database dump complete

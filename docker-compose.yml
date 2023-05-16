@@ -12,12 +12,6 @@ services:
     depends_on:
       - postgres
 
-  zabbix:
-    restart: always
-    build: ./zabbix-data-handler
-    depends_on:
-      - postgres  
-
   frontend:
     restart: always
     build: ./front-zabbix
