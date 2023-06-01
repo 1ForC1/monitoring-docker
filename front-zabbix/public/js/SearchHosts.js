@@ -19,7 +19,7 @@ function search(input) {
             color = "#D62828"
         }
 
-        let htmlinput = `<div class="hostDiv" style="background-color: ` + color + `;" id="` + searchedHosts[i].id_host + `" onclick="getIdHost(this.id)">
+        let htmlinput = `<div class="hostDiv" style="background-color: ` + color + `;" id="` + searchedHosts[i].id_host + `" onclick="getIdHost(this.id, ` + priority + `)">
                                 <p style="color: black;text-align: center; font-weight: bold; font-size: 19px; word-break: break-all;">` + searchedHosts[i].host_name.String + `</p>
                                 <img class="imageHost" src="/images/computer.png"/>
                                 <p style="color: black;text-align: center; margin-top: 15px; font-weight: bold; font-size: 15px; overflow-wrap: break-all;">` + searchedHosts[i].host_interfaces + `</p>

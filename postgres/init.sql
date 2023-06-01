@@ -5,7 +5,7 @@
 -- Dumped from database version 13.4
 -- Dumped by pg_dump version 13.4
 
--- Started on 2023-05-16 06:59:42
+-- Started on 2023-06-02 02:52:26
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -972,9 +972,7 @@ ALTER TABLE ONLY public.size_total ALTER COLUMN id_size_total SET DEFAULT nextva
 --
 
 COPY public."User" (id_user, surname, name, patronymic, login, password, "CanDeleteUsers", "CanViewHosts", "CanViewLog") FROM stdin;
-39	Доброславский	Сергей	Владимирович	test	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6fa94a8fe5ccb19ba61c4c0873d391e987982fbbd3	t	t	t
-34	2	2	2	1	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6f356a192b7913b04c54574d18c28d46e6395428ab	t	f	t
-33	TestSurname2	TestName2	TestPatronymic2	Ser123	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6fda39a3ee5e6b4b0d3255bfef95601890afd80709	t	t	f
+40	Доброславский	Сергей	Владимирович	AdminInit	6875723739323868726f69666e77727669646f687563696779373833393866716568636477696e6f153fa238cec90e5a24b85a79109f91ebe68ca481	t	t	t
 \.
 
 
@@ -1796,7 +1794,7 @@ COPY public.triggers (triggerid, triggers_expression, description, priority, hos
 -- Name: User_id_user_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."User_id_user_seq"', 39, true);
+SELECT pg_catalog.setval('public."User_id_user_seq"', 40, true);
 
 
 --
@@ -2249,7 +2247,7 @@ ALTER TABLE ONLY public.triggers
     ADD CONSTRAINT triggers_hostid_fkey FOREIGN KEY (hostid) REFERENCES public.host(hostid);
 
 
--- Completed on 2023-05-16 06:59:44
+-- Completed on 2023-06-02 02:52:29
 
 --
 -- PostgreSQL database dump complete

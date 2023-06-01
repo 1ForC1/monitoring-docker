@@ -15,13 +15,13 @@ import (
 var Query string
 
 // ReloadTables Удаление данных в таблицах и загрузка данных из zabbix
-func ReloadTables() {
+func ReloadTables() error {
 	//Удаление всех данных в таблицах
 	Query = `delete from "cpu_interrupt";delete from "cpu_Iowait";delete from "cpu_nice";
 delete from "cpu_softirq";delete from "cpu_steal";delete from "cpu_system";delete from "cpu_util_idle";
 delete from "cpu_util_user";delete from "memory_available";delete from "memory_total";
 delete from "percpu_avg1";delete from "percpu_avg5";delete from "percpu_avg15";delete from "size_free";
-delete from "size_total"; delete from "triggers";delete from "host";` + "\n"
+delete from "size_total"; delete from "triggers";delete from "host";`
 	//delete from "triggers";
 
 	//Загрузка хостов в скрипт
@@ -66,6 +66,7 @@ delete from "size_total"; delete from "triggers";delete from "host";` + "\n"
 	loghelper.WriteLogs(Query)
 	_, err = db.Exec(Query)
 	errorHelper.PrintError(err)
+	return err
 }
 
 // LoadHosts Метод получения хостов из api zabbix

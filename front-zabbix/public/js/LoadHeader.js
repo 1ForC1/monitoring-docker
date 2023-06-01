@@ -44,7 +44,6 @@ function loadHeader(search, page) {
     <div class="container d-flex flex-wrap" style="justify-content: space-between">
           <input style="width: auto;background-color: #6c757d; color: #FFFFFF" class="col-12 col-lg-auto mb-lg-0 form-control" type="search" id="searchInput" oninput="search(this.value)" placeholder="Поиск...">
           <button type="button" class="btn btn-secondary text-white me-2" onclick="reload();">Обновить</button>
-          <button type="button" class="btn btn-secondary text-white me-2" id="download-pdf">Сохранить в PDF</button>
 
       <div class="text-end">
         <button type="button" class="btn btn-secondary text-white me-2" onclick="exit();">Выход</button>

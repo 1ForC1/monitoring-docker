@@ -29,7 +29,7 @@ func LoadTriggers() {
 			errorHelper.PrintError(err)
 		} else {
 			fmt.Printf("Сработавших триггеров по хосту %v %v не обнаружено\n", structs.Hosts.Result[i].Hostid, structs.Hosts.Result[i].HostName)
-			loghelper.WriteLogs(fmt.Sprintf("Сработавших триггеров по хосту %v %v не обнаружено\n", structs.Hosts.Result[i].Hostid, structs.Hosts.Result[i].HostName))
+			loghelper.WriteLogs(fmt.Sprintf("Сработавших триггеров по хосту %v %v не обнаружено", structs.Hosts.Result[i].Hostid, structs.Hosts.Result[i].HostName))
 		}
 	}
 

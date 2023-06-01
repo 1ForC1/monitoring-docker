@@ -11,7 +11,7 @@ import (
 	"zabbix-data-handler/structs"
 )
 
-//Главный метод
+// Главный метод
 func main() {
 	//Создание логов
 	loghelper.CreateFile()
@@ -34,11 +34,16 @@ func main() {
 			//Обновление таблиц в БД
 			fmt.Println("\nОбновление данных...")
 			loghelper.WriteLogs("Обновление данных...")
-			DB.ReloadTables()
+			err = DB.ReloadTables()
+			if err != nil {
+				fmt.Printf("Данные не обновлены\n\n")
+				loghelper.WriteLogs("Данные не обновлены\n\n")
+			} else {
+				fmt.Printf("Данные обновлены\n\n")
+				loghelper.WriteLogs("Данные обновлены\n\n")
+			}
 
 			//Таймер на переотправку запросов
-			fmt.Printf("\nДанные обновлены\n\n")
-			loghelper.WriteLogs("Данные обновлены\n\n")
 			time.Sleep(timer)
 		}
 	} else {

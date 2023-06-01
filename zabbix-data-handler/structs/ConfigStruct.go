@@ -17,15 +17,4 @@ type ConfigStruct struct {
 }
 
 // Config Данные по умолчанию
-var Config = ConfigStruct{"Admin",
-	"zabbix",
-	"00h01m00s",
-	"http://192.168.42.200/zabbix/api_jsonrpc.php",
-	"127.0.0.1",
-	5432,
-	"postgres",
-	"12345678",
-	"zabbix_api",
-	"user",
-	"12345678",
-	true}
+var Config = ConfigStruct{}

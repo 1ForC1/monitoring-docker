@@ -9,8 +9,8 @@ import (
 // PrintError Вывод ошибки в консоль и запись в логи
 func PrintError(e error) {
 	if e != nil {
-		fmt.Println("\n************** " + e.Error() + " **************")
-		loghelper.WriteLogs(strings.ReplaceAll("************** "+e.Error()+" **************", "pq: ", ""))
+		fmt.Println("\n************** " + e.Error() + " **************\n")
+		loghelper.WriteLogs(strings.ReplaceAll("************** "+e.Error()+" **************\n", "pq: ", ""))
 	}
 }
 
