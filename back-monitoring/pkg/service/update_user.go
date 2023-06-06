@@ -14,6 +14,8 @@ func NewUpdateUserService(repo repository.UpdateUser) *UpdateUserService {
 }
 
 func (s *UpdateUserService) UpdateUser(user model.User) (model.User, error) {
-	user.Password = generatePasswordHash(user.Password)
+	if user.Password != "" {
+		user.Password = generatePasswordHash(user.Password)
+	}
 	return s.repo.UpdateUser(user)
 }

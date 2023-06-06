@@ -194,7 +194,7 @@ async function updateUsers() {
                                 if (response.data != null) {
                                     new Toast({
                                         title: false,
-                                        text: 'Успешное обновление пользователя ' + login + ' (' + status + ')',
+                                        text: 'Успешное изменение пользователя ' + login + ' (' + status + ')',
                                         theme: 'secondary',
                                         autohide: true,
                                         interval: 5000

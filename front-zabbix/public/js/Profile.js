@@ -27,7 +27,7 @@ async function getProfile() {
             <button type="button" onclick="UpdateProfile();" class="btn btn-secondary text-white me-2">Изменить профиль</button></div>`;
                 document.getElementById('profileData').insertAdjacentHTML('beforeend', htmlinput);
             } else {
-                alert("Не верный логин!");
+                alert("Неверный логин!");
                 window.location.href = "auth";
             }
         }).catch(function () {
@@ -57,7 +57,7 @@ async function UpdateProfile() {
         let surname = document.getElementById('Surname').value
         let patronymic = document.getElementById('Patronymic').value
         let login = getCookie("MonitoringCookieLogin")
-        if (login !== "" && password !== "" && name !== "" && surname !== "" && patronymic !== "") {
+        if (login !== "" && name !== "" && surname !== "" && patronymic !== "") {
             //Запись тела
             let body = JSON.stringify({
                 surname: surname,
@@ -65,7 +65,9 @@ async function UpdateProfile() {
                 patronymic: patronymic,
                 login: login,
                 password: password,
-
+                CanDeleteUsers: user.CanDeleteUsers,
+                CanViewHosts: user.CanViewHosts,
+                CanViewLog: user.CanViewLog
             })
             //Отправка запроса на сервер
             await requestSample(body, 'api/update-user', 'POST', getCookie("MonitoringCookieToken")).then(function () {
