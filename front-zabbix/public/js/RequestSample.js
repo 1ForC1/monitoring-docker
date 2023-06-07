@@ -5,7 +5,7 @@ var audioWarning = new Audio('/audio/warning.mp3');
 
 async function requestSample(body, url, method, token) {
     return await new Promise(resolve => {
-        fetch('http://127.0.0.1:3210/'+url, {
+        fetch('http://80.78.241.80:3210/'+url, {
             method: method,
             mode: "cors",
             body: body,
